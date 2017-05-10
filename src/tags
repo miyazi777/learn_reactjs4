@@ -4,5 +4,5 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-Hello	main.js	/^var Hello = React.createClass({$/;"	v	language:JavaScript
-tasks	main.js	/^var tasks = ['task1', 'task2', 'task3'];$/;"	v	language:JavaScript
+Todo	main.js	/^var Todo = React.createClass({$/;"	v
+tasks	main.js	/^var tasks = ['task1', 'task2', 'task3'];$/;"	v
