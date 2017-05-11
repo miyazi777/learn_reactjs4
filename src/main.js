@@ -24,15 +24,28 @@ var Todo = React.createClass({
 		});
 	},
 
+	// タスクの削除
+	_clearTask: function(e) {
+    var i = e.currentTarget.getAttribute('data-key')
+		tasks = this.state.tasks
+    tasks.splice(i, 1);
+		this.setState({tasks, tasks});
+	},
+
 	// 表示処理
 	render: function() {
 		return (
       <div>
 			  <div>
 			    {
-            this.state.tasks.map(function(task) {
-			    		return <div>{task}</div>;
-			    	})
+            this.state.tasks.map(function(task, idx) {
+			    		return (
+                <div>
+								  <span>{task}</span>
+									<button onClick={this._clearTask} data-key={idx}>ok</button>
+                </div>
+							);
+			    	}, this)
 			    }
 			  </div>
 			  <div>
