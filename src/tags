@@ -4,5 +4,6 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-Todo	main.js	/^var Todo = React.createClass({$/;"	v
+state.done	main.js	/^			done: false,$/;"	p
+task	main.js	/^var task = "task1";$/;"	v
 tasks	main.js	/^var tasks = ['task1', 'task2', 'task3'];$/;"	v

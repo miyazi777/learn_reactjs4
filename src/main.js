@@ -1,67 +1,62 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-var Todo = React.createClass({
+// タスクコンポーネント
+class Task extends React.Component {
+	constructor() {
+		super();
+		this.doneTask = this.doneTask.bind(this);
+		this.state = {
+			done: false,
+		};
+	}
 
-  getInitialState: function() {
-    return {
-			tasks: this.props.tasks,
-			newTask: ''
-    };
-  },
+	doneTask() {
+		this.setState({done: true});
+	}
 
-	_textChange(e) {
-		this.setState({newTask: e.target.value});
-	},
-
-	// タスクの追加処理
-	_addTask: function() {
-		tasks = this.state.tasks
-    tasks.push(this.state.newTask);
-		this.setState({
-			newTask: '',
-			tasks: tasks,
-		});
-	},
-
-	// タスクの削除
-	_clearTask: function(e) {
-    var i = e.currentTarget.getAttribute('data-key')
-		tasks = this.state.tasks
-    tasks.splice(i, 1);
-		this.setState({tasks, tasks});
-	},
-
-	// 表示処理
-	render: function() {
+  render() {
+		var displayName = "";
+		if (this.state.done) {
+			displayName = "(done)";
+		}
 		return (
-      <div>
-			  <div>
-			    {
-            this.state.tasks.map(function(task, idx) {
-			    		return (
-                <div>
-								  <span>{task}</span>
-									<button onClick={this._clearTask} data-key={idx}>ok</button>
-                </div>
-							);
-			    	}, this)
-			    }
-			  </div>
-			  <div>
-			    <input type="text" onChange={this._textChange} value={this.state.newTask}/>
-				  <button type="button" onClick={this._addTask}>add task</button>
-			  </div>
+			<div>
+			  <span>{displayName}{this.props.name}</span>
+				<button onClick={this.doneTask}>done</button>
 			</div>
 		);
-	},
+	}
+}
 
-});
+// タスクリストコンポーネント
+class TaskList extends React.Component {
+	constructor() {
+		super();
+	}
+
+	render() {
+		return (
+				<div>{
+          this.props.tasks.map(function(task, idx) {
+						return (
+								<Task name={task} />
+								);
+					  })
+				}</div>
+				);
+	}
+}
+
+
 
 
 var tasks = ['task1', 'task2', 'task3'];
+var task = "task1";
 
 ReactDOM.render(
-    <Todo tasks={tasks} />,
+		<div>
+			<TaskList tasks={tasks}/>
+		</div>,
     document.getElementById('app')
 );
